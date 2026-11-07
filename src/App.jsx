@@ -46,29 +46,24 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [activeText, setActiveText] = useState(0);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-
   useEffect(() => {
     const loadTimer = setTimeout(() => setLoading(false), 2200);
     return () => clearTimeout(loadTimer);
-  }, []);
-
+  }, [])
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveText((prev) => (prev + 1) % rotatingTexts.length);
     }, 1800);
     return () => clearInterval(timer);
   }, []);
-
   useEffect(() => {
     if (window.innerWidth <= 768) return;
     const handlePointerMove = (event) => {
       setCursorPosition({ x: event.clientX, y: event.clientY });
     };
-
     window.addEventListener('pointermove', handlePointerMove);
     return () => window.removeEventListener('pointermove', handlePointerMove);
   }, []);
-
   useEffect(() => {
     const revealItems = gsap.utils.toArray('.reveal');
     revealItems.forEach((element) => {
