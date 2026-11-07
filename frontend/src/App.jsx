@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowRight,
   Briefcase,
@@ -13,31 +13,31 @@ import {
   MapPin,
   MonitorSmartphone,
   Sparkles,
-} from 'lucide-react';
+} from "lucide-react";
 
-import Navbar from './components/Navbar';
-import LoadingScreen from './components/LoadingScreen';
-import ContactForm from './components/ContactForm';
-import SectionTitle from './components/SectionTitle';
-import { skills, skillCategories, categoryMap } from './data/skills';
-import { projects, viewAllProjectsUrl } from './data/projects';
-import { education, educationMessage } from './data/education';
-import { services } from './data/services';
+import Navbar from "./components/Navbar";
+import LoadingScreen from "./components/LoadingScreen";
+import ContactForm from "./components/ContactForm";
+import SectionTitle from "./components/SectionTitle";
+import { skills, skillCategories, categoryMap } from "./data/skills";
+import { projects, viewAllProjectsUrl } from "./data/projects";
+import { education, educationMessage } from "./data/education";
+import { services } from "./data/services";
 
 const rotatingTexts = [
-  'Full Stack Developer',
-  'React.js Developer',
-  'Node.js Developer',
-  'Creative Web Developer',
+  "Full Stack Developer",
+  "React.js Developer",
+  "Node.js Developer",
+  "Creative Web Developer",
 ];
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Education", href: "#education" },
+  { label: "Contact", href: "#contact" },
 ];
 
 gsap.registerPlugin(ScrollTrigger);
@@ -49,7 +49,7 @@ function App() {
   useEffect(() => {
     const loadTimer = setTimeout(() => setLoading(false), 2200);
     return () => clearTimeout(loadTimer);
-  }, [])
+  }, []);
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveText((prev) => (prev + 1) % rotatingTexts.length);
@@ -61,11 +61,11 @@ function App() {
     const handlePointerMove = (event) => {
       setCursorPosition({ x: event.clientX, y: event.clientY });
     };
-    window.addEventListener('pointermove', handlePointerMove);
-    return () => window.removeEventListener('pointermove', handlePointerMove);
+    window.addEventListener("pointermove", handlePointerMove);
+    return () => window.removeEventListener("pointermove", handlePointerMove);
   }, []);
   useEffect(() => {
-    const revealItems = gsap.utils.toArray('.reveal');
+    const revealItems = gsap.utils.toArray(".reveal");
     revealItems.forEach((element) => {
       gsap.fromTo(
         element,
@@ -74,10 +74,10 @@ function App() {
           y: 0,
           opacity: 1,
           duration: 0.9,
-          ease: 'power3.out',
+          ease: "power3.out",
           scrollTrigger: {
             trigger: element,
-            start: 'top 82%',
+            start: "top 82%",
           },
         },
       );
@@ -116,18 +116,23 @@ function App() {
                 transition={{ duration: 0.8 }}
                 className="hero-copy"
               >
-                <p className="eyebrow text-left">Hi, I&apos;m Mirza Hammad Ali</p>
+                <p className="eyebrow text-left">
+                  Hi, I&apos;m Mirza Hammad Ali
+                </p>
                 <h1>
                   <span className="hero-main">Hi, I&apos;m </span>
                   <span className="gradient-text">Mirza Hammad Ali</span>
                 </h1>
                 <div className="typed-row">
                   <span className="typed-label">I&apos;m a</span>
-                  <span className="typed-text">{rotatingTexts[activeText]}</span>
+                  <span className="typed-text">
+                    {rotatingTexts[activeText]}
+                  </span>
                 </div>
                 <p className="lead-text">
-                  I build modern, responsive, and user-friendly web applications that combine clean design with
-                  performance-focused engineering.
+                  I build modern, responsive, and user-friendly web applications
+                  that combine clean design with performance-focused
+                  engineering.
                 </p>
 
                 <div className="cta-row">
@@ -138,20 +143,40 @@ function App() {
                   <a href="#projects" className="secondary-button">
                     View My Projects
                   </a>
-                  <a href="/resume.pdf" download className="secondary-button icon-inline">
+                  <a
+                    href="/resume.pdf"
+                    download
+                    className="secondary-button icon-inline"
+                  >
                     <Download size={17} />
                     Download CV
                   </a>
                 </div>
 
                 <div className="social-row">
-                  <a href="https://github.com/Mirza-Hammad-Ali" target="_blank" rel="noreferrer" className="social-pill" aria-label="GitHub">
+                  <a
+                    href="https://github.com/Mirza-Hammad-Ali"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="social-pill"
+                    aria-label="GitHub"
+                  >
                     <Globe size={18} />
                   </a>
-                  <a href="https://www.linkedin.com/in/mirzahammad786/" target="_blank" rel="noreferrer" className="social-pill" aria-label="LinkedIn">
+                  <a
+                    href="https://www.linkedin.com/in/mirzahammad786/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="social-pill"
+                    aria-label="LinkedIn"
+                  >
                     <Briefcase size={18} />
                   </a>
-                  <a href="mailto:mirzahammadali786@gmail.com" className="social-pill" aria-label="Email">
+                  <a
+                    href="mailto:mirzahammadali786@gmail.com"
+                    className="social-pill"
+                    aria-label="Email"
+                  >
                     <Mail size={18} />
                   </a>
                 </div>
@@ -160,7 +185,7 @@ function App() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.9, ease: 'easeOut' }}
+                transition={{ duration: 0.9, ease: "easeOut" }}
                 className="hero-visual reveal"
               >
                 <div className="visual-frame">
@@ -205,11 +230,13 @@ function App() {
 
               <div className="about-content">
                 <p className="lead-text muted-strong">
-                  I&apos;m Mirza Hammad Ali, a passionate MERN Stack Developer from Sadiqabad, Pakistan. I enjoy
-                  building modern, responsive, and user-friendly web applications. I work with React.js,
-                  JavaScript, Node.js, Express.js, and MongoDB to develop complete web solutions. I love learning
-                  new technologies, solving problems, and turning creative ideas into functional digital
-                  experiences.
+                  I&apos;m Mirza Hammad Ali, a passionate MERN Stack Developer
+                  from Sadiqabad, Pakistan. I enjoy building modern, responsive,
+                  and user-friendly web applications. I work with React.js,
+                  JavaScript, Node.js, Express.js, and MongoDB to develop
+                  complete web solutions. I love learning new technologies,
+                  solving problems, and turning creative ideas into functional
+                  digital experiences.
                 </p>
 
                 <div className="info-list">
@@ -225,19 +252,34 @@ function App() {
 
                 <div className="story-cards">
                   <div className="story-card">
-                    <span className="story-icon"><MonitorSmartphone size={18} /></span>
+                    <span className="story-icon">
+                      <MonitorSmartphone size={18} />
+                    </span>
                     <h3>Responsive Design</h3>
-                    <p>Crafting interfaces that feel seamless across desktop, tablet, and mobile screens.</p>
+                    <p>
+                      Crafting interfaces that feel seamless across desktop,
+                      tablet, and mobile screens.
+                    </p>
                   </div>
                   <div className="story-card">
-                    <span className="story-icon"><Code2 size={18} /></span>
+                    <span className="story-icon">
+                      <Code2 size={18} />
+                    </span>
                     <h3>Modern Development</h3>
-                    <p>Building scalable frontends and reliable backend systems with clean architecture.</p>
+                    <p>
+                      Building scalable frontends and reliable backend systems
+                      with clean architecture.
+                    </p>
                   </div>
                   <div className="story-card">
-                    <span className="story-icon"><Sparkles size={18} /></span>
+                    <span className="story-icon">
+                      <Sparkles size={18} />
+                    </span>
                     <h3>Problem Solving</h3>
-                    <p>Turning ideas into functional experiences through thoughtful implementation.</p>
+                    <p>
+                      Turning ideas into functional experiences through
+                      thoughtful implementation.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -284,7 +326,12 @@ function App() {
                 description="Project details can be added in the data file for easy updates and future portfolio expansion."
                 align="left"
               />
-              <a href={viewAllProjectsUrl} target="_blank" rel="noreferrer" className="secondary-button">
+              <a
+                href={viewAllProjectsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="secondary-button"
+              >
                 View All Projects
               </a>
             </div>
@@ -293,7 +340,10 @@ function App() {
               {projects.length > 0 ? (
                 projects.map((project) => (
                   <article key={project.id} className="project-card">
-                    <div className="project-preview" style={{ background: project.background }}>
+                    <div
+                      className="project-preview"
+                      style={{ background: project.background }}
+                    >
                       <div className="project-overlay" />
                     </div>
                     <div className="project-body">
@@ -301,14 +351,26 @@ function App() {
                       <p>{project.description}</p>
                       <div className="tag-list">
                         {project.technologies.map((tech) => (
-                          <span key={`${project.id}-${tech}`} className="tag">{tech}</span>
+                          <span key={`${project.id}-${tech}`} className="tag">
+                            {tech}
+                          </span>
                         ))}
                       </div>
                       <div className="project-actions">
-                        <a href={project.githubUrl} target="_blank" rel="noreferrer" className="secondary-button small-button">
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="secondary-button small-button"
+                        >
                           GitHub
                         </a>
-                        <a href={project.liveUrl} target="_blank" rel="noreferrer" className="primary-button small-button">
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="primary-button small-button"
+                        >
                           Live Demo
                         </a>
                       </div>
@@ -319,7 +381,10 @@ function App() {
                 <div className="empty-state">
                   <div className="empty-visual">Portfolio</div>
                   <h3>Project details coming soon</h3>
-                  <p>Add real project names, links, and screenshots in the data file at src/data/projects.js.</p>
+                  <p>
+                    Add real project names, links, and screenshots in the data
+                    file at src/data/projects.js.
+                  </p>
                 </div>
               )}
             </div>
@@ -379,25 +444,37 @@ function App() {
           <section id="contact" className="section-wrap contact-section reveal">
             <SectionTitle
               eyebrow="Contact"
-              title="Let&apos;s build something meaningful together."
-              description="Have a project idea, collaboration request, or opportunity? Send a message and I&apos;ll get back to you soon."
+              title="Let's build something meaningful together."
+              description="Have a project idea, collaboration request, or opportunity? Send a message and I'll get back to you soon."
             />
 
             <div className="contact-grid">
               <div className="contact-panel">
                 <div className="contact-detail">
                   <Mail size={18} />
-                  <a href="mailto:mirzahammadali786@gmail.com">mirzahammadali786@gmail.com</a>
+                  <a href="mailto:mirzahammadali786@gmail.com">
+                    mirzahammadali786@gmail.com
+                  </a>
                 </div>
                 <div className="contact-detail">
                   <MapPin size={18} />
                   <span>Sadiqabad, Pakistan</span>
                 </div>
                 <div className="contact-socials">
-                  <a href="https://github.com/Mirza-Hammad-Ali" target="_blank" rel="noreferrer" className="social-pill">
+                  <a
+                    href="https://github.com/Mirza-Hammad-Ali"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="social-pill"
+                  >
                     <Globe size={18} />
                   </a>
-                  <a href="https://www.linkedin.com/in/mirzahammad786/" target="_blank" rel="noreferrer" className="social-pill">
+                  <a
+                    href="https://www.linkedin.com/in/mirzahammad786/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="social-pill"
+                  >
                     <Briefcase size={18} />
                   </a>
                 </div>
@@ -422,14 +499,28 @@ function App() {
               ))}
             </div>
             <div className="footer-socials">
-              <a href="https://github.com/Mirza-Hammad-Ali" target="_blank" rel="noreferrer">GitHub</a>
-              <a href="https://www.linkedin.com/in/mirzahammad786/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a
+                href="https://github.com/Mirza-Hammad-Ali"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/mirzahammad786/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
               <a href="mailto:mirzahammadali786@gmail.com">Email</a>
             </div>
           </div>
           <div className="footer-bottom">
             <span>© {new Date().getFullYear()} Mirza Hammad Ali.</span>
-            <a href="#home" className="back-to-top">Back to top</a>
+            <a href="#home" className="back-to-top">
+              Back to top
+            </a>
           </div>
         </footer>
       </div>
